@@ -1,8 +1,8 @@
 #ifndef _Vertex_hpp
 #define _Vertex_hpp
 
-#include <glm/vec3.hpp>
-#include <glm/vec2.hpp>
+#include "../libs/glm-0.9.7.1/glm/vec3.hpp"
+#include "../libs/glm-0.9.7.1/glm/vec2.hpp"
 #include <vector>
 
 class Vertex{

@@ -1,7 +1,4 @@
 #include "Vertex.hpp"
-#include <glm/vec3.hpp>
-#include <glm/vec2.hpp>
-
 
 std::vector<glm::vec3> Vertex::getVertexCoordinate(){
 	return this->vertex;

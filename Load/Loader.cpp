@@ -1,5 +1,4 @@
 #include "Loader.hpp"
-#include <stdio.h>
 
 
 Loader::Loader(){
@@ -21,6 +20,7 @@ bool Loader::ImportSceneFromFile(const std::string pFile){
 
 	else{
 		printf("Error to open file: %s, error: %s", pFile.c_str(), importer.GetErrorString());
+		return false;
 	}
 
 }

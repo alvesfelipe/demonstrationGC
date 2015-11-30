@@ -1,12 +1,7 @@
-#include <stdio.h>
 #include "Load/Loader.hpp"
 #include "CoordinateClasses/Vertex.hpp"
+#include "CoordinateClasses/Texture.hpp"
 #include "Common/Definitions.hpp"
-#include <string>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glut.h>
-#include <glm/vec3.hpp>
 #include <vector>
 
 std::vector<glm::vec3> vertices;

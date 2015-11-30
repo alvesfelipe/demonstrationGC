@@ -1,19 +1,18 @@
-/**
- * @author     { Claudio Djohnnatha }
- */
-
 #ifndef _Loader_hpp
 #define _Loader_hpp
 
-
 #include <string>
+#include <stdio.h>
+// #include "../libs/assimp--3.0.1270/include/assimp/Importer.hpp"
+// #include "../libs/assimp--3.0.1270/include/assimp/scene.h"          // Output data structure
+// #include "../libs/assimp--3.0.1270/include/assimp/postprocess.h"
+// #include "../libs/assimp--3.0.1270/include/assimp/cimport.h"   
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>          // Output data structure
 #include <assimp/postprocess.h>
 #include <assimp/cimport.h>   
-#include <glm/vec3.hpp>
-#include <glm/vec2.hpp>
 #include "../CoordinateClasses/Vertex.hpp"
+
 class Loader{
 	private:
 		const aiScene* pScene;
