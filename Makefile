@@ -1,9 +1,9 @@
 CC = g++
-UNAME := $(shell uname -s)
+UNAME_S := $(shell uname -s)
 
 all:
 
-ifeq ($(shell uname),Darwin)
+ifeq ($(UNAME_S),Darwin)
 	$(CC) -framework OpenGL -framework GLUT -Wno-deprecated -I main.cpp Load/*.cpp CoordinateClasses/*.cpp Common/*.cpp -o main 	
 endif
 ifeq ($(UNAME_S),Linux)
