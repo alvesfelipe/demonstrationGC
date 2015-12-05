@@ -9,7 +9,9 @@ Vertex *vertex;
 void displayedGL(void);
 Definitions *definitions;
 float newAngle = 1.0;
-
+int animationPoints = 0;
+int animationLines = 0;
+int animationTriangles = 0;
 int main(int argc, char **argv){
 
 	Loader loader;
@@ -52,24 +54,48 @@ void displayedGL(void){
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
  
-        gluLookAt(0.0f, 5.0f, -15.0f,       // camera position
-                    0.0f, 0.0f, 0.0f,       // looking at point
-                	0.0f, 1.0f, 0.0f);      // up vector
+    gluLookAt(0.0f, 5.0f, -55.0f,       // camera position
+                0.0f, 0.0f, 0.0f,       // looking at point
+            	0.0f, 1.0f, 0.0f);      // up vector
      
      //Rotate object
-     //glRotatef(newAngle+=-0.9, 0.0,0.05,0.0);
-		
-    glColor3f(1.0f, 0.0f, 0.0f);
-	glRotatef(newAngle+=0.01, 0.0,0.0,0.0);
-  
-  //Draw the object Scene
-	glBegin(GL_POINTS);
-		for(unsigned int count = 0; count < vertices.size(); count+=3){
-			glVertex3f(vertices[count].x, vertices[count].y, vertices[count].z);
-			glVertex3f(vertices[count+1].x, vertices[count+1].y, vertices[count+1].z);
-			glVertex3f(vertices[count+2].x, vertices[count+2].y, vertices[count+2].z);
-		}	
-	glEnd();
+   	glRotatef(newAngle+=-0.4, 0.0,0.05,0.0);
+	
+  	glColor3f(1.0f, 0.0f, 0.0f);
+  	//Draw the object Scene
+	if(animationPoints != vertices.size()){
+		glBegin(GL_POINTS);
+			for(unsigned int count = 0; count < animationPoints; count+=1){
+					glVertex3f(vertices[count].x, vertices[count].y, vertices[count].z);
+				}
+			if(animationPoints != vertices.size())
+				animationPoints+=20;
+		glEnd();
+	}
+
+	if(animationPoints >= vertices.size()/8 && animationPoints != vertices.size()){
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glBegin(GL_LINES);
+			for(unsigned int count = 0; count < animationLines; count+=1){
+				glVertex3f(vertices[count].x, vertices[count].y, vertices[count].z);
+			}
+			if(animationLines != vertices.size())
+				animationLines+=15;
+		glEnd();
+	}
+
+	if(animationLines >= vertices.size()/5){
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glBegin(GL_TRIANGLES);
+			for(unsigned int count = 0; count < animationTriangles; count+=3){
+				glVertex3f(vertices[count].x, vertices[count].y, vertices[count].z);
+				glVertex3f(vertices[count+1].x, vertices[count+1].y, vertices[count+1].z);
+				glVertex3f(vertices[count+2].x, vertices[count+2].y, vertices[count+2].z);
+			}
+			if(animationTriangles <= vertices.size())
+				animationTriangles+=20;
+		glEnd();	
+	}
 	glutSwapBuffers();
 	glutPostRedisplay();
 
